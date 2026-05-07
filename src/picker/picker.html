@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ScreenScot — Batch Capture</title>
+  <link rel="stylesheet" href="picker.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+        <defs>
+          <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#818cf8" />
+            <stop offset="100%" stop-color="#a78bfa" />
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#pg)" />
+        <path d="M11 11h3v3h-3zM18 11h3v3h-3zM11 18h3v3h-3zM18 18h3v3h-3z" fill="rgba(255,255,255,0.95)" />
+      </svg>
+      <div class="brand-text">
+        <h1>ScreenScot</h1>
+        <span class="tagline">Batch capture</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="panel panel--list" aria-label="Open tabs">
+      <div class="panel-head">
+        <div class="search">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+          <input type="text" id="search" placeholder="Search by title or URL…" autocomplete="off" />
+        </div>
+        <div class="list-actions">
+          <button class="link-btn" id="select-all" type="button">Select all</button>
+          <span class="dot" aria-hidden="true">·</span>
+          <button class="link-btn" id="select-none" type="button">Clear</button>
+          <span class="dot" aria-hidden="true">·</span>
+          <button class="link-btn" id="invert" type="button">Invert</button>
+        </div>
+      </div>
+
+      <div class="tab-list" id="tab-list" role="list" aria-busy="true">
+        <div class="empty" id="loading">
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Reading open tabs…</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel panel--sidebar" aria-label="Batch options">
+      <h2 class="section-label">Mode</h2>
+      <div class="option-group" id="mode-group" role="radiogroup">
+        <label class="option">
+          <input type="radio" name="mode" value="full" checked />
+          <span class="option-body">
+            <span class="option-title">Full Page</span>
+            <span class="option-sub">Capture entire page top to bottom</span>
+          </span>
+        </label>
+        <label class="option">
+          <input type="radio" name="mode" value="visible" />
+          <span class="option-body">
+            <span class="option-title">Visible Area</span>
+            <span class="option-sub">Only what's currently on screen</span>
+          </span>
+        </label>
+      </div>
+
+      <h2 class="section-label">Format</h2>
+      <div class="seg" role="radiogroup" aria-label="Output format">
+        <button class="seg-option is-active" data-format="png" type="button" aria-checked="true" role="radio">PNG</button>
+        <button class="seg-option" data-format="jpeg" type="button" aria-checked="false" role="radio">JPEG</button>
+        <span class="seg-thumb" aria-hidden="true"></span>
+      </div>
+      <p class="format-hint" id="format-hint">Lossless. Best for text and UI.</p>
+
+      <h2 class="section-label">Output</h2>
+      <div class="output-card">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z" />
+          <path d="M9 12h6M9 15h4" />
+        </svg>
+        <div>
+          <div class="output-title">ZIP archive</div>
+          <div class="output-sub">All screenshots in one downloadable file</div>
+        </div>
+      </div>
+
+      <div class="summary" id="summary">
+        <span id="summary-count">0 tabs selected</span>
+      </div>
+
+      <button class="primary-btn" id="run" type="button" disabled>
+        <span class="primary-label">Capture &amp; Export ZIP</span>
+        <svg class="primary-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14m0 0l-5-5m5 5l-5 5" />
+        </svg>
+      </button>
+
+      <button class="ghost-btn" id="cancel" type="button" hidden>Cancel</button>
+    </aside>
+  </main>
+
+  <!-- Capture progress overlay -->
+  <div class="overlay" id="overlay" hidden>
+    <div class="overlay-card">
+      <header class="overlay-head">
+        <div>
+          <h2 id="overlay-title">Capturing tabs…</h2>
+          <p id="overlay-sub">Please wait — this may take a moment.</p>
+        </div>
+        <div class="overlay-counter" id="overlay-counter">0 / 0</div>
+      </header>
+
+      <div class="progress-rail"><div class="progress-fill" id="progress-fill"></div></div>
+
+      <ul class="progress-list" id="progress-list"></ul>
+
+      <footer class="overlay-foot">
+        <button class="ghost-btn" id="overlay-cancel" type="button">Cancel</button>
+        <button class="primary-btn" id="overlay-close" type="button" hidden>Done</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="picker.js" type="module"></script>
+</body>
+</html>

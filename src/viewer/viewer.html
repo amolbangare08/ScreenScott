@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ScreenScot — Viewer</title>
+  <link rel="stylesheet" href="viewer.css" />
+</head>
+<body>
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+          <defs>
+            <linearGradient id="vg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#818cf8" />
+              <stop offset="100%" stop-color="#a78bfa" />
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#vg)" />
+          <path d="M11 11h3v3h-3zM18 11h3v3h-3zM11 18h3v3h-3zM18 18h3v3h-3z" fill="rgba(255,255,255,0.95)" />
+        </svg>
+        <span class="brand-name">ScreenScot</span>
+      </div>
+
+      <div class="meta" id="meta">
+        <span class="meta-chip" id="meta-source" title="Source page"></span>
+        <span class="meta-chip" id="meta-dims" title="Dimensions"></span>
+        <span class="meta-chip" id="meta-format" title="Format"></span>
+        <span class="meta-chip" id="meta-size" title="File size"></span>
+      </div>
+
+      <div class="actions">
+        <button class="action-btn" id="btn-copy" type="button" title="Copy to clipboard (C)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="11" height="11" rx="2" />
+            <path d="M5 15V5a2 2 0 0 1 2-2h10" />
+          </svg>
+          <span>Copy</span>
+        </button>
+
+        <button class="action-btn action-btn--primary" id="btn-download" type="button" title="Download (D)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 4v12m0 0l-4-4m4 4l4-4" />
+            <path d="M4 20h16" />
+          </svg>
+          <span>Download</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="stage" id="stage" tabindex="0">
+    <div class="stage-empty" id="stage-empty">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Loading capture…</p>
+    </div>
+
+    <div class="canvas" id="canvas" hidden>
+      <img id="image" alt="Captured screenshot" draggable="false" />
+    </div>
+
+    <div class="stage-error" id="stage-error" hidden>
+      <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 8v5M12 16h.01" />
+      </svg>
+      <h2 id="error-title">Couldn't load capture</h2>
+      <p id="error-message">The capture may have expired. Try taking another screenshot.</p>
+    </div>
+  </main>
+
+  <div class="controls" id="controls" hidden role="toolbar" aria-label="Image controls">
+    <button class="ctrl-btn" id="zoom-out" type="button" title="Zoom out (-)">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>
+    </button>
+    <span class="zoom-readout" id="zoom-readout" title="Zoom level">100%</span>
+    <button class="ctrl-btn" id="zoom-in" type="button" title="Zoom in (+)">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+    <span class="ctrl-divider" aria-hidden="true"></span>
+    <button class="ctrl-btn ctrl-btn--text" id="zoom-fit" type="button" title="Fit to screen (F)">Fit</button>
+    <button class="ctrl-btn ctrl-btn--text" id="zoom-100" type="button" title="Actual size (0)">100%</button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="viewer.js" type="module"></script>
+</body>
+</html>

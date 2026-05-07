@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ScreenScot</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app" role="application" aria-label="ScreenScot">
+    <header class="header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <defs>
+              <linearGradient id="brand-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#818cf8" />
+                <stop offset="100%" stop-color="#a78bfa" />
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#brand-grad)" />
+            <path d="M11 11h3v3h-3zM18 11h3v3h-3zM11 18h3v3h-3zM18 18h3v3h-3z" fill="rgba(255,255,255,0.95)" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>ScreenScot</h1>
+          <span class="tagline">Capture, beautifully.</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="status" id="status" data-state="ready" aria-live="polite">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="status-text" id="status-text">Ready to capture</span>
+      <div class="progress-bar" id="progress" hidden>
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="actions" role="group" aria-label="Capture options">
+      <button class="capture-btn capture-btn--primary" data-action="full" type="button">
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="3" width="16" height="18" rx="2" />
+            <path d="M8 8h8M8 12h8M8 16h5" />
+          </svg>
+        </span>
+        <span class="btn-body">
+          <span class="btn-title">Full Page</span>
+          <span class="btn-sub">Capture entire page top to bottom</span>
+        </span>
+        <kbd class="btn-kbd">Alt+Shift+S</kbd>
+      </button>
+
+      <button class="capture-btn capture-btn--secondary" data-action="visible" type="button">
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </span>
+        <span class="btn-body">
+          <span class="btn-title">Visible Area</span>
+          <span class="btn-sub">Capture only what's on screen</span>
+        </span>
+        <kbd class="btn-kbd">Alt+Shift+V</kbd>
+      </button>
+
+      <button class="capture-btn capture-btn--secondary" data-action="batch" type="button">
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="7" width="14" height="13" rx="2" />
+            <path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2" />
+          </svg>
+        </span>
+        <span class="btn-body">
+          <span class="btn-title">Multiple Tabs</span>
+          <span class="btn-sub">Pick tabs and export as ZIP</span>
+        </span>
+        <span class="btn-kbd btn-kbd--arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </span>
+      </button>
+    </div>
+
+    <footer class="footer">
+      <div class="format-row">
+        <span class="format-label">Format</span>
+        <div class="seg" role="radiogroup" aria-label="Output format">
+          <button class="seg-option is-active" data-format="png" role="radio" aria-checked="true" type="button">PNG</button>
+          <button class="seg-option" data-format="jpeg" role="radio" aria-checked="false" type="button">JPEG</button>
+          <span class="seg-thumb" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="format-hint" id="format-hint">Lossless. Best for text and UI.</div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

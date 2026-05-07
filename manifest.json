@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "ScreenScot",
+  "version": "1.0.0",
+  "description": "Premium full-page and visible-area screenshots with lossless quality.",
+  "minimum_chrome_version": "109",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "ScreenScot — Capture screenshot",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "debugger",
+    "scripting",
+    "storage",
+    "downloads",
+    "unlimitedStorage"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "commands": {
+    "capture-full-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Alt+Shift+S"
+      },
+      "description": "Capture full page"
+    },
+    "capture-visible": {
+      "suggested_key": {
+        "default": "Alt+Shift+V",
+        "mac": "Alt+Shift+V"
+      },
+      "description": "Capture visible area"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/viewer/viewer.html", "src/picker/picker.html", "assets/icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
