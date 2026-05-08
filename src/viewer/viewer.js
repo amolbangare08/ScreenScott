@@ -1,5 +1,5 @@
 /**
- * ScreenScot viewer — premium image preview with zoom, pan, copy, download.
+ * ScreenScott viewer — premium image preview with zoom, pan, copy, download.
  *
  * Loads the capture from chrome.storage.local (set by the service worker
  * before this tab was opened) and renders it with a smooth zoom/pan UX.
@@ -54,7 +54,7 @@ let state = {
 (async function init() {
   const id = new URLSearchParams(location.search).get('id');
   if (!id) {
-    showError('Missing capture ID', 'Open a screenshot through the ScreenScot popup or shortcut.');
+    showError('Missing capture ID', 'Open a screenshot through the ScreenScott popup or shortcut.');
     return;
   }
 
@@ -79,7 +79,7 @@ let state = {
     // Tell the service worker we have it, so it can drop the storage entry.
     chrome.runtime.sendMessage({ type: 'consumeCapture', id }).catch(() => {});
   } catch (err) {
-    console.error('[ScreenScot] viewer init failed:', err);
+    console.error('[ScreenScott] viewer init failed:', err);
     showError('Something went wrong', err?.message || 'Unable to load this capture.');
   }
 })();
@@ -123,7 +123,7 @@ function populateMeta(meta, dataUrl) {
 
 function updateDocumentTitle(meta) {
   const host = formatHostname(meta.url) || 'capture';
-  document.title = `ScreenScot — ${host}`;
+  document.title = `ScreenScott — ${host}`;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -281,7 +281,7 @@ async function downloadCapture() {
   if (!state.dataUrl) return;
   els.btnDownload.disabled = true;
   try {
-    const filename = state.meta?.fileName || `ScreenScot_${Date.now()}.png`;
+    const filename = state.meta?.fileName || `ScreenScott_${Date.now()}.png`;
     await chrome.downloads.download({
       url: state.dataUrl,
       filename,

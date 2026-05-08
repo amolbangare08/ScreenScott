@@ -1,13 +1,13 @@
 /**
- * ScreenScot batch-capture picker.
+ * ScreenScott batch-capture picker.
  *
  * Loads the user's open tabs, lets them choose which to capture, what mode
  * (Full Page / Visible Area), and what format. Streams progress from the
  * service worker into a per-tab status list and shows a final report.
  */
 
-const PROGRESS_CHANNEL = 'ScreenScot-batch-progress';
-const FORMAT_KEY = 'ScreenScot_format';
+const PROGRESS_CHANNEL = 'ScreenScott-batch-progress';
+const FORMAT_KEY = 'ScreenScott_format';
 
 const els = {
   search:        document.getElementById('search'),

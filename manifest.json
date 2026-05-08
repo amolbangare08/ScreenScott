@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "ScreenScot",
+  "name": "ScreenScott",
   "version": "1.0.0",
   "description": "Premium full-page and visible-area screenshots with lossless quality.",
   "minimum_chrome_version": "109",
@@ -12,7 +12,7 @@
   },
   "action": {
     "default_popup": "src/popup/popup.html",
-    "default_title": "ScreenScot — Capture screenshot",
+    "default_title": "ScreenScott — Capture screenshot",
     "default_icon": {
       "16": "assets/icons/icon16.png",
       "32": "assets/icons/icon32.png",

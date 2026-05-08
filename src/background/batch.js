@@ -17,7 +17,7 @@ import {
 import { isRestrictedUrl, safeFilenameStem, sleep } from './util.js';
 import { ZipBuilder, sanitizeFilename, uniquifyFilename, dataUrlToBytes } from './zip.js';
 
-const PROGRESS_CHANNEL = 'ScreenScot-batch-progress';
+const PROGRESS_CHANNEL = 'ScreenScott-batch-progress';
 
 // Settle time after activating a tab — gives the renderer time to paint fully.
 // Longer = better quality; shorter = faster batch. 1200ms is a safe default.
@@ -153,7 +153,7 @@ async function captureOne(tab, mode, format) {
   try {
     return await captureFullPageCDP(tab, format);
   } catch (err) {
-    console.warn('[ScreenScot] CDP failed for tab', tab.id, '→ stitch', err);
+    console.warn('[ScreenScott] CDP failed for tab', tab.id, '→ stitch', err);
     return await captureFullPageStitch(tab, format);
   }
 }
@@ -211,7 +211,7 @@ function makeArchiveName(when = new Date()) {
   const pad = n => String(n).padStart(2, '0');
   const stamp = `${when.getFullYear()}-${pad(when.getMonth() + 1)}-${pad(when.getDate())}` +
                 `_${pad(when.getHours())}-${pad(when.getMinutes())}-${pad(when.getSeconds())}`;
-  return `ScreenScot_batch_${stamp}.zip`;
+  return `ScreenScott_batch_${stamp}.zip`;
 }
 
 function emit(payload) {

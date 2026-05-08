@@ -1,5 +1,5 @@
 /**
- * ScreenScot — service worker entry.
+ * ScreenScott — service worker entry.
  *
  * Responsibilities:
  *   - Routes messages from the popup and viewer.
@@ -22,7 +22,7 @@ import { runBatch } from './batch.js';
 
 const CAPTURE_KEY_PREFIX = 'capture_';
 const CAPTURE_TTL_MS = 30 * 60 * 1000; // 30 minutes
-const PROGRESS_CHANNEL = 'ScreenScot-progress';
+const PROGRESS_CHANNEL = 'ScreenScott-progress';
 const PICKER_URL = 'src/picker/picker.html';
 
 let inFlight = false;
@@ -112,7 +112,7 @@ chrome.commands.onCommand.addListener(async (command) => {
       await runCapture({ mode: 'visible', format: 'png', tabId: tab.id });
     }
   } catch (err) {
-    console.error('[ScreenScot] command failed:', err);
+    console.error('[ScreenScott] command failed:', err);
   }
 });
 
@@ -154,7 +154,7 @@ async function runCapture({ mode, format = 'png', tabId }) {
         captureResult = await captureFullPageCDP(tab, format, { onProgress });
         engineUsed = 'cdp';
       } catch (cdpErr) {
-        console.warn('[ScreenScot] CDP capture failed, falling back to stitch:', cdpErr);
+        console.warn('[ScreenScott] CDP capture failed, falling back to stitch:', cdpErr);
         onProgress({ phase: 'fallback' });
         captureResult = await captureFullPageStitch(tab, format, { onProgress });
         engineUsed = 'stitch';
@@ -228,7 +228,7 @@ async function cleanupOldCaptures() {
     }
     if (expiredKeys.length) await chrome.storage.local.remove(expiredKeys);
   } catch (err) {
-    console.warn('[ScreenScot] cleanup failed:', err);
+    console.warn('[ScreenScott] cleanup failed:', err);
   }
 }
 
@@ -330,7 +330,7 @@ async function runBatchOrchestrated({ tabIds, mode, format }) {
 }
 
 function broadcastBatchProgress(payload) {
-  chrome.runtime.sendMessage({ type: 'ScreenScot-batch-progress', payload }).catch(() => {});
+  chrome.runtime.sendMessage({ type: 'ScreenScott-batch-progress', payload }).catch(() => {});
 }
 
 async function downloadBlob(blob, filename) {

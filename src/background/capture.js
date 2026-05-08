@@ -1,5 +1,5 @@
 /**
- * Capture engines for ScreenScot.
+ * Capture engines for ScreenScott.
  *
  * Three modes are exposed:
  *   - captureVisible()        : single-shot of the visible viewport via tabs API.
@@ -279,7 +279,7 @@ function prepareForStitch() {
   docEl.style.scrollBehavior = 'auto';
 
   // Stash on window for the restore call.
-  window.__ScreenScot_state__ = { original, modifiedElements };
+  window.__ScreenScott_state__ = { original, modifiedElements };
 
   return {
     totalWidth: Math.max(
@@ -299,7 +299,7 @@ function prepareForStitch() {
 }
 
 function restoreAfterStitch() {
-  const state = window.__ScreenScot_state__;
+  const state = window.__ScreenScott_state__;
   if (!state) return;
 
   const { original, modifiedElements } = state;
@@ -311,5 +311,5 @@ function restoreAfterStitch() {
   if (document.body) document.body.style.overflow = original.bodyOverflow;
   window.scrollTo(original.scrollX, original.scrollY);
 
-  delete window.__ScreenScot_state__;
+  delete window.__ScreenScott_state__;
 }

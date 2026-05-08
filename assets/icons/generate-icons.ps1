@@ -1,4 +1,4 @@
-# ScreenScot — icon generator
+# ScreenScott — icon generator
 # Renders the brand mark (gradient rounded square + 4-dot viewfinder) at all
 # sizes required by manifest.json. Antialiased and HiDPI-clean.
 

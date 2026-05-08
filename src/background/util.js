@@ -32,7 +32,7 @@ export function timestampStem(d = new Date()) {
 }
 
 export function buildFileName(url, format, when = new Date()) {
-  return `ScreenScot_${safeFilenameStem(url)}_${timestampStem(when)}.${format === 'jpeg' ? 'jpg' : 'png'}`;
+  return `ScreenScott_${safeFilenameStem(url)}_${timestampStem(when)}.${format === 'jpeg' ? 'jpg' : 'png'}`;
 }
 
 export function sleep(ms) {

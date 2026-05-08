@@ -1,5 +1,5 @@
 /**
- * ScreenScot popup controller.
+ * ScreenScott popup controller.
  *
  * - Tracks the user's preferred output format in chrome.storage.sync.
  * - Sends capture requests to the service worker.
@@ -7,8 +7,8 @@
  *   automatically when Chrome focuses the new viewer tab.
  */
 
-const PROGRESS_CHANNEL = 'ScreenScot-progress';
-const FORMAT_KEY = 'ScreenScot_format';
+const PROGRESS_CHANNEL = 'ScreenScott-progress';
+const FORMAT_KEY = 'ScreenScott_format';
 
 const els = {
   status:        document.getElementById('status'),

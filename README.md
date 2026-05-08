@@ -1,6 +1,6 @@
 <h1 align="center">
-  <img src="assets/icons/icon128.png" width="72" alt="ScreenScot logo" /><br/>
-  ScreenScot
+  <img src="assets/icons/icon128.png" width="72" alt="ScreenScott logo" /><br/>
+  ScreenScott
 </h1>
 
 <p align="center">
@@ -18,7 +18,7 @@
 
 ## 📌 Table of Contents
 
-- [What is ScreenScot?](#-what-is-screenscot)
+- [What is ScreenScott?](#-what-is-screenscott)
 - [Features](#-features)
 - [Browser Support](#-browser-support)
 - [Installation](#-installation)
@@ -32,11 +32,11 @@
 
 ---
 
-## 🖼 What is ScreenScot?
+## 🖼 What is ScreenScott?
 
-**ScreenScot** is a free, open-source Chrome browser extension that lets you capture high-quality screenshots of any web page — whether it's just the visible viewport, the entire scrollable page, or a batch of multiple tabs exported as a ZIP archive.
+**ScreenScott** is a free, open-source Chrome browser extension that lets you capture high-quality screenshots of any web page — whether it's just the visible viewport, the entire scrollable page, or a batch of multiple tabs exported as a ZIP archive.
 
-Unlike cloud-based screenshot tools, ScreenScot works **100% locally** inside your browser. No account. No uploads. No third-party servers. Your captures stay on your machine.
+Unlike cloud-based screenshot tools, ScreenScott works **100% locally** inside your browser. No account. No uploads. No third-party servers. Your captures stay on your machine.
 
 It was built for:
 - **Developers** archiving UI states, bug reports, or design references
@@ -86,7 +86,7 @@ It was built for:
 
 1. Download or clone this repository:
    ```bash
-   git clone https://github.com/amolbangare08/ScreenScot.git
+   git clone https://github.com/amolbangare08/ScreenScott.git
    ```
 
 2. Open Chrome and navigate to:
@@ -96,9 +96,9 @@ It was built for:
 
 3. Enable **Developer mode** (toggle in the top-right corner).
 
-4. Click **Load unpacked** and select the `ScreenScoot/` folder (the one containing `manifest.json`).
+4. Click **Load unpacked** and select the `ScreenScott/` folder (the one containing `manifest.json`).
 
-5. The **ScreenScot** icon appears in your toolbar. Pin it for one-click access.
+5. The **ScreenScott** icon appears in your toolbar. Pin it for one-click access.
 
 > **Note:** You'll need to click the reload button in `chrome://extensions` after pulling any updates.
 
@@ -108,16 +108,16 @@ It was built for:
 
 ### Single Tab — Full Page
 1. Navigate to any web page
-2. Click the ScreenScot toolbar icon
+2. Click the ScreenScott toolbar icon
 3. Click **Full Page** → a viewer tab opens with your screenshot
 4. Use **Download** (or press `D`) to save, or **Copy** (or press `C`) to copy to clipboard
 
 ### Single Tab — Visible Area
-1. Click the ScreenScot toolbar icon
+1. Click the ScreenScott toolbar icon
 2. Click **Visible Area** — captures only what's currently on screen
 
 ### Multi-Tab Batch Export (ZIP)
-1. Click the ScreenScot toolbar icon
+1. Click the ScreenScott toolbar icon
 2. Click **Multiple Tabs** → the Batch Picker opens
 3. Select which tabs to capture (tabs in your current window are pre-selected)
 4. Choose **Full Page** or **Visible Area** mode
@@ -155,7 +155,7 @@ It was built for:
 
 ## 🔒 Permissions Explained
 
-ScreenScot requests only the permissions it genuinely needs:
+ScreenScott requests only the permissions it genuinely needs:
 
 | Permission | Why it's needed |
 |---|---|
@@ -172,7 +172,7 @@ ScreenScot requests only the permissions it genuinely needs:
 
 ## 🛡 Privacy & Security
 
-- **Zero network requests** — ScreenScot never sends any data outside your browser
+- **Zero network requests** — ScreenScott never sends any data outside your browser
 - **No analytics or telemetry** — no tracking of any kind
 - **No third-party dependencies** — the entire extension is vanilla JS with zero npm packages
 - **Local processing only** — captures are stored temporarily in `chrome.storage.local` and removed after 30 minutes
@@ -183,7 +183,7 @@ ScreenScot requests only the permissions it genuinely needs:
 ## 📁 Project Structure
 
 ```
-ScreenScoot/
+ScreenScott/
 ├── manifest.json                  # Extension manifest (MV3)
 ├── assets/
 │   └── icons/                     # Extension icons (16, 32, 48, 128px)
@@ -215,7 +215,7 @@ ScreenScoot/
 Contributions are welcome! Here's how to get started:
 
 1. **Fork** this repository
-2. **Clone** your fork: `git clone https://github.com/your-username/ScreenScot.git`
+2. **Clone** your fork: `git clone https://github.com/your-username/ScreenScott.git`
 3. Make your changes (load unpacked to test locally)
 4. **Open a pull request** with a clear description of what you changed and why
 
@@ -225,7 +225,7 @@ Please keep PRs focused — one feature or fix per PR. For larger changes, open 
 
 ## 📄 License
 
-ScreenScot is released under the **MIT License**. See [LICENSE](LICENSE) for full details.
+ScreenScott is released under the **MIT License**. See [LICENSE](LICENSE) for full details.
 
 You are free to use, modify, and distribute this software for any purpose, including commercial use, as long as the original copyright notice is retained.
 
